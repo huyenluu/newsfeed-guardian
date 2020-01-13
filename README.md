@@ -2,8 +2,8 @@
 
 The app is built using the following frameworks:
 
-* React using [Create React App](https://github.com/facebook/create-react-app)
-* React components [Material-UI](https://material-ui.com/)
+* React using [Create React App](https://github.com/facebook/create-react-app) toolchain
+* React components from [Material-UI](https://material-ui.com/)
 
 ## Initial setup
 ### cd newsfeed-guardian
