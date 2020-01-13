@@ -1,10 +1,14 @@
-# News feed by Guardian API
+# News feed from the Guardian API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app is built using the following frameworks:
+
+* React using [Create React App](https://github.com/facebook/create-react-app) toolchain
+* React components from [Material-UI](https://material-ui.com/)
 
 ## Initial setup
-
-In ./src/functions rename variables.js.example to variables.js and insert your Guardian API Key there.
+### cd newsfeed-guardian
+### `npm install`
+### In ./src/functions rename variables.js.example to variables.js and insert your Guardian API Key there.
 
 ## Running the app
 
