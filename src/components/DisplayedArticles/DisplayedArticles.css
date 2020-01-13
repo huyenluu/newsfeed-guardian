@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+.Card{
+    height: 68vh;
+    position: relative;
+}
+.icon_btn {
+   position: absolute;
+   left: 10px;
+   bottom: 10px;
+}
+.pillar_name{
+    color: #c70000;
+}
+.web_tittle {
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+.body_text_mq{
+    padding-top: 10px;
+    color: #424242;
+    font-size: 16px;
+    height: 83px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.body_text{
+    padding-top: 10px;
+    color: #424242;
+    font-size: 16px;
+}

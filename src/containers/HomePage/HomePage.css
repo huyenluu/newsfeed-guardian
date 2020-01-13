@@ -1,0 +1,12 @@
+.group_btn {
+    margin: 30px 0;
+    display: flex;
+    justify-content:flex-end;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .group_btn {
+        justify-content: center;
+    }
+}
