@@ -6,9 +6,9 @@ The app is built using the following frameworks:
 * React components from [Material-UI](https://material-ui.com/)
 
 ## Initial setup
-### cd newsfeed-guardian
+### `cd newsfeed-guardian`
 ### `npm install`
-### In ./src/functions rename variables.js.example to variables.js and insert your Guardian API Key there.
+**In ./src/functions rename variables.js.example to variables.js and insert your Guardian API Key there.**
 
 ## Running the app
 
