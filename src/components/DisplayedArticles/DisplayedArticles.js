@@ -1,22 +1,20 @@
-import React, { useContext , useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import CardActions from '@material-ui/core/CardActions';
 import Grid from '@material-ui/core/Grid';
-import {  CardMedia } from '@material-ui/core';
+import { CardMedia} from '@material-ui/core';
 import htmlSanitizer from '../../functions/htmlSanitizer';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import { SetFavoriteContext, FavoriteContext } from '../../context/FavoriteArticleContext';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import './DisplayedArticles.css'
 import MySnackbar from '../MySnackbar';
+import StarIcon from '@material-ui/icons/Star';
 
 const DisplayedArticles = ({ articles }) => {
-    const matches = useMediaQuery('(min-width:700px)');
+    
     const { setFavoriteArticleIds } = useContext(SetFavoriteContext)
     const { favoriteArticleIds } = useContext(FavoriteContext)
     const [openSnackBar, setOpenSnackBar] = useState(false);
@@ -43,7 +41,7 @@ const DisplayedArticles = ({ articles }) => {
 
         }
     }
-    const handleCloseSnackBar =() =>{
+    const handleCloseSnackBar = () => {
         setOpenSnackBar(false)
     }
 
@@ -53,42 +51,44 @@ const DisplayedArticles = ({ articles }) => {
         else {
             return (
                 <Grid item xs={12} sm={6} md={4} key={article.id}>
-                    <MySnackbar open ={openSnackBar} setOpen ={handleCloseSnackBar} />
+                    <MySnackbar open={openSnackBar} setOpen={handleCloseSnackBar} />
                     <Card className='Card'>
                         <Link to={`/${article.id}`}>
-                        
-                                <CardMedia image={article.fields.thumbnail} style={{ height: 300 }} />
-
-                                <CardContent>
-                                    <Typography gutterBottom variant="h5" component="h4" style ={{fontWeight: 700, color: '#c70000'}}>
-                                        {article.pillarName}
-                                    </Typography>
-                                    
-                                    <Typography variant="h5" component="h3" className ='web_tittle'>
-                                        {article.webTitle}
-                                    </Typography>
-                        
-                                    <div
-                                        dangerouslySetInnerHTML={{ __html: htmlSanitizer(article.fields.trailText) }}
-                                        className = {matches ? 'body_text_mq': 'body_text' }
-                                    />
-                                </CardContent>
-                       
+                            <CardMedia image={article.fields.thumbnail} style={{ height: 300 }} />
                         </Link>
-                        <CardActions className ='icon_btn'>
-                            <Tooltip 
-                                title={favoriteArticleIds.indexOf(article.id) === -1 ? 'Add to Favotites' : 'Remove from favorites'}
-                                aria-label="add">
-                                <IconButton
-                                    aria-label="add to favorites"
-                                    onClick={handleAddFavorite(article.id)}
-                                    color={favoriteArticleIds.indexOf(article.id) === -1 ? 'primary' : 'secondary'}
-                                    
+                        <CardContent>
+                            <div className='card_header'>
+                                <Typography gutterBottom variant="h5" component="h4" style={{ fontWeight: 700, color: '#c70000' }}>
+                                    {article.pillarName}
+                                </Typography>
+                                <Tooltip
+                                    title={favoriteArticleIds.indexOf(article.id) === -1 ? 'Add to Favotites' : 'Remove from favorites'}
+                                    aria-label="add"
                                 >
-                                    <FavoriteIcon className='icon' />
-                                </IconButton>
-                            </Tooltip>
-                        </CardActions>
+                                    <IconButton
+                                        aria-label="add to favorites"
+                                        onClick={handleAddFavorite(article.id)}
+                                        color={favoriteArticleIds.indexOf(article.id) === -1 ? 'primary' : 'secondary'}
+                                        className='icon'
+                                    >
+                                        <StarIcon />
+                                    </IconButton>
+                                </Tooltip>
+                            </div>
+
+                            <Link to={`/${article.id}`}>
+                                <Typography variant="h5" component="h3" className='web_tittle'>
+                                    {article.webTitle}
+                                </Typography>
+
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: htmlSanitizer(article.fields.trailText) }}
+                                    className='card_body_text'
+                                />
+                            </Link>
+
+                        </CardContent>
+
                     </Card>
                 </Grid>
             )

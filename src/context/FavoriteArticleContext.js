@@ -5,7 +5,7 @@ export const SetFavoriteContext = createContext()
 const FavoriteContextProvider = (props) => {
 
   const data = sessionStorage.getItem('favoriteArticleIds')
-  const initialIds = data === null? [] : data.split(',')
+  const initialIds = data ? data.split(',') : []
  
   const [favoriteArticleIds, setFavoriteArticleIds] = useState(initialIds)
   const [favoriteArticles, setFavoriteArticles] =useState([])
