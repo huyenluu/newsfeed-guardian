@@ -1,6 +1,9 @@
 # News feed by Guardian API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app is built using the following frameworks:
+
+* [Create React App](https://github.com/facebook/create-react-app)
+* [Material-UI](https://material-ui.com/)
 
 ## Initial setup
 
