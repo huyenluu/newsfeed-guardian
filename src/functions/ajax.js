@@ -10,12 +10,16 @@ export function search (params) {
     const searchString = qs.stringify(params)
     const url = GUARDIAN_API_URL + '/search?' + searchString
 
-    return axios(url)
+    return axios(url,{
+        'Access-Control-Allow-Origin': GUARDIAN_API_URL
+    })
 }
 export function searchItem(id,params) {
 
     const searchString = qs.stringify(params)
     
     const url = GUARDIAN_API_URL +`/${id}?`+searchString
-    return axios(url)
+    return axios(url,{
+        'Access-Control-Allow-Origin': GUARDIAN_API_URL
+    })
 } 
