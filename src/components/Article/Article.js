@@ -31,25 +31,22 @@ const Article = () => {
 
     )
 
-    const handleClickFavorite = (e) => {
+    const handleClickFavorite = id => (e) => {
 
-        if (favoriteArticleIds.length > 10) {
-            console.log('you can have only 10 favorite article!')
+        if (favoriteArticleIds.indexOf(id) !== -1) {
+            let newArrIds = [...favoriteArticleIds]
+            const index = favoriteArticleIds.indexOf(id)
+            newArrIds.splice(index, 1)
+            setFavoriteArticleIds(newArrIds)
+            sessionStorage.setItem('favoriteArticleIds', newArrIds)
         } else {
-            if (favoriteArticleIds.indexOf(article.id) === -1) {
-                setFavoriteArticleIds([...favoriteArticleIds, article.id])
-                sessionStorage.setItem('favoriteArticleIds', [...favoriteArticleIds, article.id])
+            if (favoriteArticleIds.length > 10) {
+                console.log('you can have only 10 favorite article!')
             }
             else {
-                //id already there
-                let newArrIds = [...favoriteArticleIds]
-                const index = favoriteArticleIds.indexOf(article.id)
-                newArrIds.splice(index, 1)
-                setFavoriteArticleIds(newArrIds)
-                sessionStorage.setItem('favoriteArticleIds', newArrIds)
-
+                setFavoriteArticleIds([...favoriteArticleIds, id])
+                sessionStorage.setItem('favoriteArticleIds', [...favoriteArticleIds, id])
             }
-
         }
     }
 
@@ -68,7 +65,7 @@ const Article = () => {
                         <div className='favorite_btn'>
                             <Button
                                 variant={favoriteArticleIds.indexOf(article.id) !== -1 ? 'contained' : 'outlined'}
-                                onClick={handleClickFavorite}
+                                onClick={handleClickFavorite(article.id)}
                                 color={favoriteArticleIds.indexOf(article.id) !== -1 ? 'secondary' : 'primary'}
 
                             >

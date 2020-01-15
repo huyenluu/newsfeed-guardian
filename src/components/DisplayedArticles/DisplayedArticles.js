@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { CardMedia} from '@material-ui/core';
+import { CardMedia } from '@material-ui/core';
 import htmlSanitizer from '../../functions/htmlSanitizer';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -14,31 +14,28 @@ import MySnackbar from '../MySnackbar';
 import StarIcon from '@material-ui/icons/Star';
 
 const DisplayedArticles = ({ articles }) => {
-    
+
     const { setFavoriteArticleIds } = useContext(SetFavoriteContext)
     const { favoriteArticleIds } = useContext(FavoriteContext)
     const [openSnackBar, setOpenSnackBar] = useState(false);
 
     const handleAddFavorite = id => event => {
-        if (favoriteArticleIds.length > 10) {
-            console.log('you can have only 10 favorite article!')
-            setOpenSnackBar(true)
+
+        if (favoriteArticleIds.indexOf(id) !== -1) {
+            let newArrIds = [...favoriteArticleIds]
+            const index = favoriteArticleIds.indexOf(id)
+            newArrIds.splice(index, 1)
+            setFavoriteArticleIds(newArrIds)
+            sessionStorage.setItem('favoriteArticleIds', newArrIds)
         } else {
-            if (favoriteArticleIds.indexOf(id) === -1) {
+            if (favoriteArticleIds.length > 10) {
+                console.log('you can have only 10 favorite article!')
+                setOpenSnackBar(true)
+            }
+            else {
                 setFavoriteArticleIds([...favoriteArticleIds, id])
                 sessionStorage.setItem('favoriteArticleIds', [...favoriteArticleIds, id])
             }
-            else {
-                //id already there
-
-                let newArrIds = [...favoriteArticleIds]
-                const index = favoriteArticleIds.indexOf(id)
-                newArrIds.splice(index, 1)
-                setFavoriteArticleIds(newArrIds)
-                sessionStorage.setItem('favoriteArticleIds', newArrIds)
-
-            }
-
         }
     }
     const handleCloseSnackBar = () => {
