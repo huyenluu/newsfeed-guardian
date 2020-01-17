@@ -81,11 +81,12 @@
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .tittle {
-        font-size: 25px;
+        font-size: 20px;
         line-height: 28px;
     }
     .section_name{
         font-size: 20px;
+        margin: 10px 0;
     }
     .paper_container {
         padding: 30px 20px;
@@ -94,5 +95,18 @@
         position: relative;
         margin-top: 10px;
         padding-left: 37px;
+    }
+    .body_text{
+        padding: 0;
+    }
+    .header_text{
+        padding: 0;
+    }
+    /* .favorite_btn{
+     height: 50%;
+    } */
+    .header_image figure {
+        margin: 0;
+        margin-top: 10px;
     }
 }

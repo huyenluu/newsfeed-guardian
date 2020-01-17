@@ -1,4 +1,4 @@
-import React, { useState, createContext} from 'react';
+import React, { useState, createContext, useEffect} from 'react';
 export const FavoriteContext = createContext()
 export const SetFavoriteContext = createContext()
 
@@ -9,6 +9,12 @@ const FavoriteContextProvider = (props) => {
  
   const [favoriteArticleIds, setFavoriteArticleIds] = useState(initialIds)
   const [favoriteArticles, setFavoriteArticles] =useState([])
+
+  // useEffect(() => {
+  //   sessionStorage.setItem('favoriteArticleIds', favoriteArticleIds)
+  // },
+  // [favoriteArticleIds]
+  // )
 
 
   return (

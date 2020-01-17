@@ -6,10 +6,11 @@ import { Container, Button, Grid, Paper, CssBaseline } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { SetFavoriteContext, FavoriteContext } from '../../context/FavoriteArticleContext';
 import './Article.css'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-
-const Article = () => {
-
+const Article = ({setOpenSnackBar}) => {
+    
+    // const matches = useMediaQuery('(max-width:768px)')
     const [article, setArticle] = useState()
 
     let { pathname } = useLocation();
@@ -38,18 +39,18 @@ const Article = () => {
             const index = favoriteArticleIds.indexOf(id)
             newArrIds.splice(index, 1)
             setFavoriteArticleIds(newArrIds)
-            sessionStorage.setItem('favoriteArticleIds', newArrIds)
+            
         } else {
             if (favoriteArticleIds.length > 10) {
-                console.log('you can have only 10 favorite article!')
+                setOpenSnackBar(true)
             }
             else {
                 setFavoriteArticleIds([...favoriteArticleIds, id])
-                sessionStorage.setItem('favoriteArticleIds', [...favoriteArticleIds, id])
+                
             }
         }
     }
-
+    
     if (article === undefined) return 'Loading...'
 
     return (
@@ -67,7 +68,7 @@ const Article = () => {
                                 variant={favoriteArticleIds.indexOf(article.id) !== -1 ? 'contained' : 'outlined'}
                                 onClick={handleClickFavorite(article.id)}
                                 color={favoriteArticleIds.indexOf(article.id) !== -1 ? 'secondary' : 'primary'}
-
+                                // size={matches ? 'small' : null}
                             >
                                 <FavoriteBorderIcon />
                                 <span> </span>

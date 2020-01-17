@@ -7,7 +7,7 @@ function Alert(props) {
 }
 
 
-export default function MySnackbar({open,setOpen}) {
+export default function MySnackbar({open,setOpen, message}) {
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -27,7 +27,7 @@ export default function MySnackbar({open,setOpen}) {
         }}
         >
         <Alert onClose={handleClose} severity="warning">
-            You can have only 10 favorite article!
+            {message}
         </Alert>
       </Snackbar>
 

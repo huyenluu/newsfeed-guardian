@@ -5,6 +5,10 @@ a {
 
 .pillar_name{
     color: #c70000;
+    padding-top: 12px;
+    font-weight: 700;
+    font-size: 25px;
+    margin: 0 0;
 }
 .web_tittle {
     font-weight: bold;
@@ -19,7 +23,8 @@ a {
 .card_header {
     display: flex;
     justify-content: space-between;
+    
 }
-.icon{
-    padding-top: 0 !important;
+.MuiCard-root {
+    height: 100%;
 }
