@@ -10,11 +10,11 @@ const FavoriteContextProvider = (props) => {
   const [favoriteArticleIds, setFavoriteArticleIds] = useState(initialIds)
   const [favoriteArticles, setFavoriteArticles] =useState([])
 
-  // useEffect(() => {
-  //   sessionStorage.setItem('favoriteArticleIds', favoriteArticleIds)
-  // },
-  // [favoriteArticleIds]
-  // )
+  useEffect(() => {
+    sessionStorage.setItem('favoriteArticleIds', favoriteArticleIds)
+  },
+  [favoriteArticleIds]
+  )
 
 
   return (

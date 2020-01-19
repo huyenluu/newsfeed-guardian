@@ -10,7 +10,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const Article = ({setOpenSnackBar}) => {
     
-    // const matches = useMediaQuery('(max-width:768px)')
+    const matches = useMediaQuery('(max-width:768px)')
     const [article, setArticle] = useState()
 
     let { pathname } = useLocation();
@@ -30,7 +30,7 @@ const Article = ({setOpenSnackBar}) => {
                 })
         }
 
-    )
+    ,[pathname])
 
     const handleClickFavorite = id => (e) => {
 
@@ -68,7 +68,7 @@ const Article = ({setOpenSnackBar}) => {
                                 variant={favoriteArticleIds.indexOf(article.id) !== -1 ? 'contained' : 'outlined'}
                                 onClick={handleClickFavorite(article.id)}
                                 color={favoriteArticleIds.indexOf(article.id) !== -1 ? 'secondary' : 'primary'}
-                                // size={matches ? 'small' : null}
+                                size={matches ? 'small' : 'medium'}
                             >
                                 <FavoriteBorderIcon />
                                 <span> </span>

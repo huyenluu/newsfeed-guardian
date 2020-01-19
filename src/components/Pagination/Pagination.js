@@ -15,12 +15,10 @@ const useStyles = makeStyles(theme => ({
 
 const Pagination = ({ page, pageCount, handlePageClick }) => {
     const matches = useMediaQuery('(max-width:600px)');
-    console.log(matches)
     const classes = useStyles()
 
     const handleClick = (e, page) => {
         handlePageClick(e, page)
-        console.log(page)
     }
     const visiblePages = page < 7 ? [...Array(10).keys()].map(i => i + 1) : [...Array(10).keys()].map(i => i + page - 5)
     return (
